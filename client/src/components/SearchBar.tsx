@@ -4,6 +4,8 @@ import { MdTravelExplore } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
+import PrimaryConfirmBtn from "./buttons/primary/PrimaryConfirmBtn";
+import PrimaryCancelBtn from "./buttons/primary/PrimaryCancelBtn";
 
 const SearchBar = () => {
   const navigate = useNavigate();
@@ -26,6 +28,15 @@ const SearchBar = () => {
     );
     navigate("/search");
   };
+
+  const handleSearchClick = () => {
+    console.log('search clicked')
+  }
+
+  const handleClearClick = () => {
+    console.log('search clicked')
+  }
+
 
   const minDate = new Date();
   const maxDate = new Date();
@@ -70,7 +81,7 @@ const SearchBar = () => {
           />
         </label>
       </div>
-      <div>
+      <div className="flex gap-0">
         <DatePicker
           selected={checkIn}
           onChange={(date) => setCheckIn(date as Date)}
@@ -99,12 +110,14 @@ const SearchBar = () => {
         />
       </div>
       <div className="flex gap-1">
-        <button className="w-2/3 bg-blue-600 text-white h-full p-2 font-bold text-xl hover:bg-blue-500">
+        {/* <button className="w-2/3 bg-blue-600 text-white h-full p-2 font-bold text-xl hover:bg-blue-500">
           Search
-        </button>
-        <button className="w-1/3 bg-red-600 text-white h-full p-2 font-bold text-xl hover:bg-red-500">
+        </button> */}
+        <PrimaryConfirmBtn onClick={handleSearchClick}>Search</PrimaryConfirmBtn>
+        {/* <button className="w-1/3 bg-red-600 text-white h-full p-2 font-bold text-xl hover:bg-red-500">
           Clear
-        </button>
+        </button> */}
+        <PrimaryCancelBtn onClick={handleClearClick}>Clear</PrimaryCancelBtn>
       </div>
     </form>
   );
